@@ -1,0 +1,12 @@
+service: media_player.play_media
+entity_id: media_player.yandex_station_kitchen
+data:
+  media_content_id: >-
+    {{ ['Холодильник не закрыт 40 секунд, закройте пожалуйста! ', 'Холодильник
+    не закрыт, Дед морозу жарко! ', 'А зачем вы проветриваете холодильник,
+    продукты портятся! ', 'Холодильник жалуется, что его не закрывают', 'Это
+    холодильник а не музей, не нужно смотреть в него так долго, закройте
+    пожалуйста дверь']|random }}
+  media_content_type: text
+  extra:
+    volume_level: "{{ states('input_number.alicevolume') | float }}"
