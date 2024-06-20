@@ -1,0 +1,54 @@
+alias: test3
+description: ""
+trigger:
+  - platform: event
+    event_type: yandex_intent
+    event_data:
+      text: Открой шкаф витрину
+condition: []
+action:
+  - service: media_player.play_media
+    data:
+      media_content_id: Назовите пароль от шкафа!
+      media_content_type: dialog:Дом ёжика:открыть шкаф
+      extra:
+        volume_level: 0.5
+    target:
+      entity_id: "{{ trigger.event.data.entity_id }}"
+  - wait_for_trigger:
+      platform: event
+      event_type: yandex_intent
+      event_data:
+        session:
+          session:
+            dialog: открыть шкаф
+    timeout:
+      seconds: 15
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: "{{ wait.trigger.event.data.text in [\"барабашка\"] }}"
+        sequence:
+          - event: yandex_intent_response
+            event_data:
+              text: Код верный! Открываю
+          - service: lock.unlock
+            target:
+              entity_id:
+                - lock.mario1_lock
+            data: {}
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 2
+              milliseconds: 0
+          - service: lock.unlock
+            target:
+              entity_id:
+                - lock.mario2_lock
+            data: {}
+    default:
+      - event: yandex_intent_response
+        event_data:
+          tts: Не верный код! Режим тревоги.
+mode: single

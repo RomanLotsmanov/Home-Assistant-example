@@ -1,0 +1,16 @@
+alias: Test Alice intent
+description: ""
+trigger:
+  - platform: event
+    event_type: yandex_intent
+    event_data:
+      text: Кто нибудь дома
+condition: []
+action:
+  - service: media_player.play_media
+    target:
+      entity_id: "{{ trigger.event.data.entity_id }}"
+    data:
+      media_content_type: text
+      media_content_id: Я не знаю, ха-ха
+mode: single
