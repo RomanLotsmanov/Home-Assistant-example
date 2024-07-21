@@ -26,7 +26,7 @@
 
 > Описание самого мини компьютера OrangePi включая расположение разьемов, подключение вентилятора и порядок сборки корпуса представлен в официальной документации, которая представлена на официальном сайте OrangePi
 >
-> [OrangePi](https://www.orangepi.org/) в разделе Download - User manual
+> [OrangePi](http://www.orangepi.org/) в разделе Download - User manual
 
 1. Скачать образ OS Debian 12 bookworm server с официального сайта OrangePi в разделе Download - Official Images - Debian Images (имя файла должно быть примерно такое: Orangepi3b_1.0.6_debian_bookworm_server_linux5.10.160.7z)
 2. Подключать micro SD card в ПК через кард ридер и отформатировать ее программой SD Memory Card Formatter
