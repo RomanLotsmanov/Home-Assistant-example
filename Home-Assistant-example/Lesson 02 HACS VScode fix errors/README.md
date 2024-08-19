@@ -1,4 +1,4 @@
-# Настройка Home Assistant  HACS и VScode на мини компьютер OrangePi, исправление ошибок
+# Настройка Home Assistant  HACS и VScode на мини компьютер OrangePi, исправление ошибок AppArmor и CGroup
 
 > **Внимание!** Команды по установке Home Assistant со временем могут менятся и дополняться розработчиками Home Assistant. Установка актуальна для версии Home Assistant 2024.06-07. Мини компьютер OrangePi
 
@@ -73,7 +73,6 @@
    ```
    sudo nano /etc/hosts
    ```
-
 
 ## Исправление ошибок AppArmor и CGroup
 
