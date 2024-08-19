@@ -1,4 +1,4 @@
-# Настройка Home Assistant  HACS и VScode на мини компьютер OrangePi, исправление ошибок AppArmor и CGroup
+# Настройка Home Assistant  HACS и VScode, исправление ошибок AppArmor и CGroup
 
 > **Внимание!** Команды по установке Home Assistant со временем могут менятся и дополняться розработчиками Home Assistant. Установка актуальна для версии Home Assistant 2024.06-07. Мини компьютер OrangePi
 
@@ -74,42 +74,68 @@
    sudo nano /etc/hosts
    ```
 
+## Вспомогательная панель для Home Assistant
+
+Открыть Visual Studio Code в нем выбрать файл configuration.yaml и в нем в конце файла добавить строки:
+
+```
+panel_custom:
+  - name: server_state
+    sidebar_title: 'Статус'
+    sidebar_icon: mdi:Server
+    js_url: /api/hassio/app/entrypoint.js
+    url_path: 'hassio/system'
+    embed_iframe: true
+    require_admin: true
+    config:
+      ingress: core_configurator
+```
+
 ## Исправление ошибок AppArmor и CGroup
 
 1. Заходим под сессию с повышенными правами
+
    ```
    sudo su -
    ```
 2. Проверяем статус сервиса AppArmor
+
    ```
    systemctl status apparmor.service
    ```
 3. Проверяем дополнительные параметры загрузки в файле /boot/orangepiEnv.txt
+
    ```
    ls /boot/
    cat /boot/orangepiEnv.txt
    ```
 4. Можно создать резервную копию файла
+
    ```
    cp /boot/orangepiEnv.txt /boot/orangepiEnv.bak
    ```
 5. Вносим изменения в файл /boot/orangepiEnv.txt
+
    ```
    echo "extraargs=apparmor=1 security=apparmor systemd.unified_cgroup_hierarchy=false systemd.legacy_systemd_cgroup_controller=false" >> /boot/orangepiEnv.txt
    ```
 6. Проверям корретно ли внеслись изменения
+
    ```
    cat /boot/orangepiEnv.txt
    ```
 7. Формируем загрузочный имидж файл для последующей загрузки с дополнительными параметрами
+
    ```
    update-initramfs -u
    ```
 8. Перезагружаемся
+
    ```
    reboot
    ```
 9. Проверяем что все исправлено
+
    ```
    systemctl status apparmor.service
    ```
