@@ -102,20 +102,22 @@
 3. Далее выполняем установку пакетов как указано в официальной документации (Step 1: Install the following dependencies with this command:)
 
    ```
-   sudo apt install
-   apparmor
-   bluez
-   cifs-utils
-   curl
-   dbus
-   jq
-   libglib2.0-bin
-   lsb-release
-   network-manager
-   nfs-common
-   systemd-journal-remote
-   systemd-resolved
-   udisks2
+   sudo apt install \
+   apparmor \
+   bluez \
+   cifs-utils \
+   curl \
+   dbus \
+   iproute2 \
+   jq \
+   libglib2.0-bin \
+   lsb-release \
+   network-manager \
+   nfs-common \
+   systemd-journal-remote \
+   systemd-resolved \
+   systemd-timesyncd \
+   udisks2 \
    wget -y
    ```
 4. Перезагрузка мини компьютера
