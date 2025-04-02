@@ -134,12 +134,12 @@
 6. Устанавливаем OS агент Home Assistant необходимо найти необходимый файл на [страничке агента](https://github.com/home-assistant/os-agent/releases/latest) для нашего мини компьютера нужен файл с архитектурой aarch копируем на него ссылку в браузере и закачиваем его на мини компьютер с помощью команды (имя файла может отличатся):
 
    ```
-   wget https://github.com/home-assistant/os-agent/releases/download/1.6.0/os-agent_1.6.0_linux_aarch64.deb
+   wget https://github.com/home-assistant/os-agent/releases/download/1.7.2/os-agent_1.7.2_linux_aarch64.deb
    ```
 7. Далее устанавливаем скачанный пакет с помощбю команды (имя файла может отличатся):
 
    ```
-   sudo dpkg -i os-agent_1.6.0_linux_aarch64.deb
+   sudo dpkg -i os-agent_1.7.2_linux_aarch64.deb
    ```
 8. Далее устанавливаем сам Home Assistant:
 
